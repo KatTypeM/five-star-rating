@@ -1,0 +1,184 @@
+ /*
+Theme Name: Five Star Rating
+Author: Jason DeBay
+Author URI: https://kattypem.com
+Theme URI: https://kattypem.com
+Description: Single and Dynamically created five star rating
+Version: 1.0.0
+*/
+ 
+ /* test styles css */
+*{
+	margin: 0;
+	padding: 0;
+}
+:root{
+	--test1: red;
+	--test2: blue;
+}
+body{
+	text-align: center;
+	/* background: var(--test2); */
+}
+main{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+
+/* single star rating code */
+/* container widget that adds label */
+.container-star-rate-label{
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	align-items: center;
+	text-align: center;
+}
+/* Rating widget */
+.container-five-star-rate {
+    display: inline-block;
+    border: 0;
+	/* change to center under the h3 label, remove if no label */
+	padding-right: 1.4rem;
+}
+/* Hide radio buttons*/
+.container-five-star-rate > input {
+    display: none;
+}
+/* Order correctly by floating highest to the right */
+.container-five-star-rate > label {
+    float: right;
+}
+/* The star of the show */
+.container-five-star-rate > label:before {
+    display: inline-block;
+    font-size: 1.1rem;
+    padding: .3rem .2rem;
+    margin: 0;
+    cursor: pointer;
+	/* font awesome 6 */
+    /* font-family: FontAwesome; */
+	/* font awesome 5 free link */
+    font-family: "Font Awesome 5 Free";
+	/* font less than 500 outline, font greater than 600 solid */
+	font-weight: 600;
+	/* full star outline */
+    content: "\f005 "; 
+}
+/* Zero stars rating */
+.container-five-star-rate > label:last-child:before {
+    content: "\f006 "; /* empty star outline */
+}
+/* Half star trick */
+.container-five-star-rate .half:before {
+    content: "\f089 "; /* half star no outline */
+    position: absolute;
+    padding-right: 0;
+	/* hide the right side of the star giving more space for clicking full star */
+	width: 0.7rem;
+	overflow: hidden;
+}
+/* Click + hover color */
+/* label::before:hover, */
+.container-five-star-rate input:checked ~ label, /* color current and previous stars on checked */
+.container-five-star-rate label:hover,
+.container-five-star-rate label:hover ~ label {
+	color: #FF9400;
+} /* color previous stars on hover */
+
+/* Hover highlights */
+.container-five-star-rate input:checked + label:hover,
+.container-five-star-rate input:checked ~ label:hover, /* highlight current and previous stars */
+.container-five-star-rate input:checked ~ label:hover ~ label, /* highlight previous selected stars for new rating */
+.container-five-star-rate label:hover ~ input:checked ~ label /* highlight previous selected stars */ { color: #FFC375;  } 
+
+
+/* Dynamic created star rating */
+/* container for putting dynamic data */
+.container-section-movie{
+	text-align: center;
+	background: #eee;
+}
+.container-individual-movie{
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	width: 100%;
+}
+.display-movie-title{
+	padding-left: 1.4rem;
+}
+/* Rating widget */
+.container-star-rating {
+    display: inline-block;
+    border: 0;
+	/* change to center under the h3 label, remove if no label */
+	padding-right: 1.4rem;
+}
+/* Hide radio buttons*/
+.container-star-rating > input {
+    display: none;
+}
+/* Order correctly by floating highest to the right */
+.container-star-rating > label {
+    float: right;
+}
+/* The star of the show */
+.container-star-rating > label:before {
+    display: inline-block;
+    font-size: 1.1rem;
+    padding: .3rem .2rem;
+    margin: 0;
+    cursor: pointer;
+	/* font awesome 6 */
+    /* font-family: FontAwesome; */
+	/* font awesome 5 free link */
+    font-family: "Font Awesome 5 Free";
+	/* font less than 500 outline, font greater than 600 solid */
+	font-weight: 600;
+	/* full star outline */
+    content: "\f005 "; 
+}
+/* Zero stars rating */
+.container-star-rating > label:last-child:before {
+    content: "\f006 "; /* empty star outline */
+}
+/* Half star trick */
+.container-star-rating .half:before {
+    content: "\f089 "; /* half star no outline */
+    position: absolute;
+    padding-right: 0;
+	/* hide the right side of the star giving more space for clicking full star */
+	width: 0.7rem;
+	overflow: hidden;
+}
+/* Click + hover color */
+/* label::before:hover, */
+.container-star-rating input:checked ~ label, /* color current and previous stars on checked */
+.container-star-rating label:hover,
+.container-star-rating label:hover ~ label {
+	color: #FF9400;
+} /* color previous stars on hover */
+/* Hover highlights */
+.container-star-rating input:checked + label:hover,
+.container-star-rating input:checked ~ label:hover, /* highlight current and previous stars */
+.container-star-rating input:checked ~ label:hover ~ label, /* highlight previous selected stars for new rating */
+.container-star-rating label:hover ~ input:checked ~ label /* highlight previous selected stars */ { color: #FFC375;  } 
+
+
+/* badic media queries */
+/* mobile menu */
+@media screen and (min-width: 768px){
+	.container-section-movie{
+		width: 60%;
+	};
+}
+@media screen and (max-width: 767px){
+	.container-section-movie{
+		width: 90%;
+	};
+}
